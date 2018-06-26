@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".audio.AudioActivity">
+        </activity>
+        <activity android:name=".video.VideoActivity">
+        </activity>
+        <activity android:name=".audio.basics.CaptureFrameAudioActivity">
+        </activity>
     </application>
 
 </manifest>

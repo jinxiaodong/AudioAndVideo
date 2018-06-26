@@ -1,5 +1,4 @@
-package com.xiaodong.audioandvideo;
-
+package com.xiaodong.audioandvideo.audio;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.xiaodong.audioandvideo.audio.AudioActivity;
+import com.xiaodong.audioandvideo.R;
 import com.xiaodong.audioandvideo.utils.FormatDataUtils;
 import com.xiaodong.audioandvideo.video.VideoActivity;
 import com.xiaodong.basetools.base.JBaseActivity;
@@ -20,11 +19,11 @@ import java.util.List;
 
 import butterknife.InjectView;
 
-public class MainActivity extends JBaseActivity {
+public class AudioActivity extends JBaseActivity {
+
 
     @InjectView(R.id.recycleview)
     RecyclerView mRecycleview;
-
     private ListAdapter mListAdapter;
     private List<BeanWraper> mList = new ArrayList<>();
 
@@ -37,9 +36,9 @@ public class MainActivity extends JBaseActivity {
     @Override
     protected void initValue(Bundle onSavedInstance) {
         super.initValue(onSavedInstance);
-        setTitle("Android音视频技术学习");
-        mList.add(FormatDataUtils.getBeanWraper("audio"));
-        mList.add(FormatDataUtils.getBeanWraper("video"));
+        setTitle("音频技术");
+        mList.add(FormatDataUtils.getBeanWraper("采集一帧音频"));
+        mList.add(FormatDataUtils.getBeanWraper("播放一帧音频"));
 
     }
 
@@ -62,11 +61,11 @@ public class MainActivity extends JBaseActivity {
                 BeanWraper beanWraper = mList.get(position);
                 Intent intent = null;
                 switch (beanWraper.name) {
-                    case "audio":
-                        intent = new Intent(MainActivity.this, AudioActivity.class);
+                    case "采集一帧音频":
+                        intent = new Intent(AudioActivity.this, AudioActivity.class);
                         break;
-                    case "video":
-                        intent = new Intent(MainActivity.this, VideoActivity.class);
+                    case "播放一帧音频":
+                        intent = new Intent(AudioActivity.this, VideoActivity.class);
 
                         break;
                 }
@@ -88,4 +87,5 @@ public class MainActivity extends JBaseActivity {
         mRecycleview.setLayoutManager(new LinearLayoutManager(mContext));
         mRecycleview.setAdapter(mListAdapter);
     }
+
 }
