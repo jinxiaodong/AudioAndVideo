@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.xiaodong.audioandvideo.R;
+import com.xiaodong.audioandvideo.audio.basics.CaptureFrameAudioActivity;
 import com.xiaodong.audioandvideo.utils.FormatDataUtils;
 import com.xiaodong.audioandvideo.video.VideoActivity;
 import com.xiaodong.basetools.base.JBaseActivity;
@@ -46,9 +47,6 @@ public class AudioActivity extends JBaseActivity {
     protected void initWidget(Bundle onSavedInstance) {
         super.initWidget(onSavedInstance);
         SystemBarUtil.setChenJinTitle(getCommonHeader().getGuider(), mContext);
-        /*禁用页面滑动退出*/
-        setEnableBackLayout(false);
-
         mListAdapter = new ListAdapter(this, mList);
     }
 
@@ -62,14 +60,14 @@ public class AudioActivity extends JBaseActivity {
                 Intent intent = null;
                 switch (beanWraper.name) {
                     case "采集一帧音频":
-                        intent = new Intent(AudioActivity.this, AudioActivity.class);
+                        intent = new Intent(AudioActivity.this, CaptureFrameAudioActivity.class);
                         break;
                     case "播放一帧音频":
                         intent = new Intent(AudioActivity.this, VideoActivity.class);
 
                         break;
                 }
-                if(intent ==null) {
+                if (intent == null) {
                     return;
                 }
                 startActivity(intent);
