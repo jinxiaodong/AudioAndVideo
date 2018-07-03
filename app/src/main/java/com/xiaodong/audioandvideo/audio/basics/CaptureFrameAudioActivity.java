@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.xiaodong.audioandvideo.R;
 import com.xiaodong.audioandvideo.audio.utils.AudioCaptureUtils;
+import com.xiaodong.audioandvideo.audio.utils.AudioPlayUtils;
 import com.xiaodong.basetools.base.JBaseActivity;
 import com.xiaodong.basetools.view.JButton;
 
@@ -21,6 +22,8 @@ public class CaptureFrameAudioActivity extends JBaseActivity implements View.OnC
     JButton mStart;
     @InjectView(R.id.stop)
     JButton mStop;
+    @InjectView(R.id.play)
+    JButton mPlay;
 
     @Override
     protected int getContentLayoutId() {
@@ -45,6 +48,7 @@ public class CaptureFrameAudioActivity extends JBaseActivity implements View.OnC
         super.initListener(onSavedInstance);
         mStart.setOnClickListener(this);
         mStop.setOnClickListener(this);
+        mPlay.setOnClickListener(this);
     }
 
     @Override
@@ -60,8 +64,12 @@ public class CaptureFrameAudioActivity extends JBaseActivity implements View.OnC
                 AudioCaptureUtils.getInstance().startRecord();
                 break;
             case R.id.stop:
+                AudioPlayUtils.getInstance().stopPlay();
                 AudioCaptureUtils.getInstance().stopRecord();
                 AudioCaptureUtils.getInstance().convertWaveFile("");
+                break;
+            case R.id.play:
+                AudioPlayUtils.getInstance().startPlay("test1");
                 break;
         }
     }

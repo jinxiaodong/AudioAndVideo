@@ -39,7 +39,7 @@ public class AudioCaptureUtils {
     private static int audioRate = 44100;
 
     /*录音的声道：单声道：CHANNEL_IN_MONO、双通道：CHANNEL_IN_STEREO*/
-    private static int audioChannel = AudioFormat.CHANNEL_IN_MONO;
+    private static int audioChannel = AudioFormat.CHANNEL_IN_STEREO;
 
     /*采样数据位宽：常用的是 ENCODING_PCM_16BIT（16bit），ENCODING_PCM_8BIT（8bit）*/
     private static int audioFormat = AudioFormat.ENCODING_PCM_16BIT;
@@ -73,7 +73,7 @@ public class AudioCaptureUtils {
     private String pcmFileName = "";
     /*读取数据的线程*/
     private Thread mThread;
-    private String pcmName = "";
+    private String pcmName = "test1";
 
 
     private AudioCaptureUtils() {
